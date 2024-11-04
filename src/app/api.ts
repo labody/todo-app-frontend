@@ -20,8 +20,9 @@ export const addTodo = async (todo: ITodo): Promise<ITodo> => {
   const newTodo = await res.json();
   return newTodo;
 }
-export const editTodo = async (todo: ITodo, id:number): Promise<ITodo> => {
-  const res = await fetch(`${baseUrl}/todos/${id}`, {
+
+export const editTodo = async (todo: ITodo): Promise<ITodo> => {
+  const res = await fetch(`${baseUrl}/todos/${todo.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

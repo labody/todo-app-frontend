@@ -19,8 +19,9 @@ const Todo: React.FC<TodoProps> = ({todo}) => {
     const handleEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         await editTodo({
-            title: todoToEdit
-        });
+            id: todo.id,
+            title: todoToEdit,
+        },                );
         setTodoToEdit("");
         setOpenModalEdit(false);
         router.refresh();
