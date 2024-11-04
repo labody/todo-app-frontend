@@ -1,18 +1,25 @@
-import axios from 'axios';
+import { ITodo } from '../../types/todos';
 
-const api = axios.create({
-  baseURL: 'http://localhost:3000', // LoopBack API URL
-});
+const baseUrl = 'http://localhost:3000'; // LoopBack API URL
 
-export const getTodos = async () => {
-  const response = await api.get('/todos');
-  return response.data;
+
+export const getAllTodos = async (): Promise<ITodo> => {
+  const res = await fetch(`${baseUrl}/todos`, {cache: 'no-store'});
+  const todos = await res.json();
+  return todos;
 };
 
-// export const createTodo = async (todo) => {
-//   const response = await api.post('/todos', todo);
-//   return response.data;
-// };
+export const addTodo = async (todo: ITodo): Promise<ITodo> => {
+  const res = await fetch(`${baseUrl}/todos`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(todo)
+  })
+  const newTodo = await res.json();
+  return newTodo;
+}
 
 // export const updateTodo = async (id, updatedTodo) => {
 //   const response = await api.patch(`/todos/${id}`, updatedTodo);

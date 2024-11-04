@@ -1,28 +1,27 @@
 "use client";
-interface Todo {
-    id: number;
-    title: string;
-    isComplete: boolean;
-    description: string;
+
+import { ITodo } from "../../../types/todos";
+import Todo from "./Todo";
+
+interface TodoListProps {
+   todos: ITodo[]
 }
 
-const TodoList = ({ todos }: { todos: Todo[] } ) => {
+const TodoList: React.FC<TodoListProps> = ({ todos}) => {
   return (
 <div className="overflow-x-auto">
   <table className="table">
     <thead>
       <tr>
-        <th>Todos</th>
-        <th>Actions</th>
+        <th>TODOS</th>
+        <th>ACTIONS</th>
       </tr>
     </thead>
     <tbody>
         {todos.map((todo) => (
-        <tr key={todo.id}>
-            <td>{todo.title}</td>
-            <td>Blue</td>
-      </tr>
-        ))}
+        <Todo todo={todo}/>
+        )
+         )}
       
     </tbody>
   </table>
