@@ -20,7 +20,7 @@ export const addTodo = async (todo: ITodo): Promise<ITodo> => {
   const newTodo = await res.json();
   return newTodo;
 }
-export const editTodo = async (todo: ITodo): Promise<ITodo> => {
+export const editTodo = async (todo: ITodo, id:number): Promise<ITodo> => {
   const res = await fetch(`${baseUrl}/todos/${id}`, {
     method: 'PUT',
     headers: {
@@ -32,10 +32,7 @@ export const editTodo = async (todo: ITodo): Promise<ITodo> => {
   return updatedTodo;
 }
 
-// export const updateTodo = async (id, updatedTodo) => {
-//   const response = await api.patch(`/todos/${id}`, updatedTodo);
-//   return response.data;
-// };
+
 
 // export const deleteTodo = async (id) => {
 //   await api.delete(`/todos/${id}`);
