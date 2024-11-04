@@ -4,6 +4,7 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi';
 import { FormEventHandler, useState } from 'react';
 import Modal from './Modal';
 import { useRouter } from 'next/navigation';
+import { editTodo } from '../api';
 
 interface TodoProps {
     todo: ITodo;
@@ -17,9 +18,9 @@ const Todo: React.FC<TodoProps> = ({todo}) => {
 
     const handleEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
-        // await addTodo({
-        //     title: newTodoValue
-        // })
+        await editTodo({
+            title: todoToEdit
+        });
         setTodoToEdit("");
         setOpenModalEdit(false);
         router.refresh();
