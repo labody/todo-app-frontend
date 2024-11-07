@@ -1,8 +1,8 @@
 
 import { ITodo } from '../../types/todos';
 
-const baseUrl = 'http://localhost:3000'; // LoopBack API URL
-
+ // LoopBack API URL
+ const baseUrl = 'http://localhost:3000';
 
 export const getAllTodos = async (): Promise<ITodo> => {
   const res = await fetch(`${baseUrl}/todos`, {cache: 'no-store'});
@@ -31,16 +31,12 @@ export const editTodo = async (todo: ITodo): Promise<ITodo> => {
     body: JSON.stringify(todo)
   });
 
-
   const updatedTodo = await res.json();
   return updatedTodo;
 }
 
-
-
 export const deleteTodo = async (todo: ITodo) : Promise<void> => {
   const res = await fetch(`${baseUrl}/todos/${todo.id}`, {
     method: 'DELETE',
-
   })
 };
