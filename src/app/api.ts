@@ -38,6 +38,9 @@ export const editTodo = async (todo: ITodo): Promise<ITodo> => {
 
 
 
-// export const deleteTodo = async (id) => {
-//   await api.delete(`/todos/${id}`);
-// };
+export const deleteTodo = async (todo: ITodo) : Promise<void> => {
+  const res = await fetch(`${baseUrl}/todos/${todo.id}`, {
+    method: 'DELETE',
+
+  })
+};
