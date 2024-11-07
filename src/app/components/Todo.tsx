@@ -1,4 +1,5 @@
 "use client";
+
 import { ITodo } from '../../../types/todos';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 import { FormEventHandler, useState } from 'react';
@@ -16,19 +17,30 @@ const Todo: React.FC<TodoProps> = ({todo}) => {
     const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);
     const [todoToEdit, setTodoToEdit] = useState<string>(todo.title);
 
+
     const handleEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
+
+        try {
+            const updatedTodo = 
         await editTodo({
             id: todo.id,
             title: todoToEdit,
-        },                );
+        });
+
+        if (updatedTodo) {
         setTodoToEdit("");
         setOpenModalEdit(false);
         router.refresh();
+        }
+    } catch (error) {
+        console.error("Failed to edit todo:", error);
     }
+}
+
 
   return (
-    <tr>
+    <tr key={todo.id}>
     <td className='w-full'>{todo.title}</td>
     <td className='flex gap-5'>
         <FiEdit onClick={()=> setOpenModalEdit(true)} cursor="pointer" className="text-blue-500" size={25}/>

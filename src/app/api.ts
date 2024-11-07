@@ -1,3 +1,4 @@
+
 import { ITodo } from '../../types/todos';
 
 const baseUrl = 'http://localhost:3000'; // LoopBack API URL
@@ -28,7 +29,9 @@ export const editTodo = async (todo: ITodo): Promise<ITodo> => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(todo)
-  })
+  });
+
+
   const updatedTodo = await res.json();
   return updatedTodo;
 }
