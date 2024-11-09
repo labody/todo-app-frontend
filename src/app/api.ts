@@ -23,7 +23,7 @@ export const addTodo = async (todo: ITodo): Promise<ITodo> => {
 }
 
 export const editTodo = async (todo: ITodo): Promise<ITodo> => {
-  const res = await fetch(`${baseUrl}/todos/${todo.id}`, {
+  const res = await fetch(`${baseUrl}/todos/${todo._id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ export const editTodo = async (todo: ITodo): Promise<ITodo> => {
 }
 
 export const deleteTodo = async (todo: ITodo) : Promise<void> => {
-  const res = await fetch(`${baseUrl}/todos/${todo.id}`, {
+  const res = await fetch(`${baseUrl}/todos/${todo._id}`, {
     method: 'DELETE',
   })
 };

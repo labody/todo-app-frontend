@@ -13,14 +13,13 @@ const TodoList: React.FC<TodoListProps> = ({ todos}) => {
   <table className="table">
     <thead>
       <tr>
-        <th>No.</th>
         <th>TODOS</th>
         <th>ACTIONS</th>
       </tr>
     </thead>
     <tbody>
         {todos.map((todo) => (
-        <Todo key={todo.id} todo={todo}/>
+        <Todo key={todo._id} todo={todo}/>
         )
          )}
       

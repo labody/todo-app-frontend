@@ -24,7 +24,7 @@ const Todo: React.FC<TodoProps> = ({todo}) => {
         try {
             const updatedTodo = 
         await editTodo({
-            id: todo.id,
+            _id: todo._id,
             title: todoToEdit,
         });
 
@@ -48,8 +48,7 @@ const Todo: React.FC<TodoProps> = ({todo}) => {
     }
 
   return (
-    <tr key={todo.id}>
-     <td>{todo.id}</td>   
+    <tr key={todo._id}>
     <td className='w-full'>{todo.title}</td>
     <td className='flex gap-5'>
         <FiEdit onClick={()=> setOpenModalEdit(true)} cursor="pointer" className="text-blue-500" size={25}/>
